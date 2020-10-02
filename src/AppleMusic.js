@@ -190,6 +190,27 @@ if (Platform.OS == 'ios') {
     })
   }
 
+  const getUserPlaylist = AppleMusic.getUserPlaylist
+  AppleMusic.getUserPlaylist = () => {
+    return new Promise((resolve, reject) => {
+      getUserPlaylist((answer, rest) => {
+        if (answer) {
+          try {
+            let cb = JSON.parse(rest)
+            console.log(cb)
+            const _playlist = cb.data
+            resolve(_playlist)
+          } catch (e) {
+            reject(new Error("error trying to get user playlist"))
+          }
+
+        } else {
+          reject(new Error("error trying to get user playlist"))
+        }
+      })
+    })
+  }
+
   const recentPlayed = AppleMusic.getRecentPlayed
   AppleMusic.recentPlayed = () => {
     return new Promise((resolve, reject) => {
@@ -226,6 +247,24 @@ if (Platform.OS == 'ios') {
 
         } else {
           reject(new Error("error trying to get song by id"))
+        }
+      })
+    })
+  }
+
+  const startSong = AppleMusic.startSong
+  AppleMusic.startSong = (id) => {
+    return new Promise((resolve, reject) => {
+      startSong(id, (answer, rest) => {
+        if (answer) {
+          try {
+            resolve(true)
+          } catch (e) {
+            reject(new Error("error trying to start song"))
+          }
+
+        } else {
+          reject(new Error("error trying to start song"))
         }
       })
     })

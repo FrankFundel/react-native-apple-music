@@ -10,7 +10,7 @@ import SwiftJWT
 import StoreKit
 import PromiseKit
 import CloudKit
-
+import MediaPlayer
 
 @objc(AppleMusicAPI)
 class AppleMusicAPI: NSObject {
@@ -404,6 +404,15 @@ class AppleMusicAPI: NSObject {
                 }
             }
         }
+    }
+    
+    @objc
+    public func startSong(_ id: String){
+      let storeIds: [String] = [ id ]
+      let player = MPMusicPlayerController.applicationQueuePlayer
+      let queue  = MPMusicPlayerStoreQueueDescriptor(storeIDs: storeIds)
+      player.setQueue(with: queue)
+      player.play()
     }
 
     /**
