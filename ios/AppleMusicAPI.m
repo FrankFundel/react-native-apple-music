@@ -51,13 +51,16 @@ RCT_EXTERN_METHOD(getHeavyRotation:(RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD(getRecentPlayed:(RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD(getUserRecommendations:(RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD(getAllUserPlaylists:(RCTResponseSenderBlock)callback)
-RCT_EXTERN_METHOD(getUserPlaylist:(RCTResponseSenderBlock)callback)
 
-RCT_EXTERN_METHOD(getSong:(NSString)id)
+RCT_EXTERN_METHOD(startSong:(NSString)id)
 RCT_EXTERN_METHOD(play)
 RCT_EXTERN_METHOD(pause)
 RCT_EXTERN_METHOD(seek:(NSObject)time)
 
+RCT_EXTERN_METHOD(getUserPlaylist:(NSString)id
+                  resolve:(RCTPromiseResolveBlock)resolve
+                  reject:(RCTPromiseRejectBlock)reject)
+                
 RCT_EXTERN_METHOD(addToPlaylist:(NSString)playlistId
                         mediaId:(NSString)mediaId
                         resolve:(RCTPromiseResolveBlock)resolve

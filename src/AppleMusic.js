@@ -191,9 +191,9 @@ if (Platform.OS == 'ios') {
   }
 
   const getUserPlaylist = AppleMusic.getUserPlaylist
-  AppleMusic.getUserPlaylist = () => {
+  AppleMusic.getUserPlaylist = (id) => {
     return new Promise((resolve, reject) => {
-      getUserPlaylist((answer, rest) => {
+      getUserPlaylist(id, (answer, rest) => {
         if (answer) {
           try {
             let cb = JSON.parse(rest)
