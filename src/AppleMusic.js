@@ -90,9 +90,9 @@ if (Platform.OS == 'ios') {
   }
 
   const searchSong = AppleMusic.searchForTerm
-  AppleMusic.searchSong = (search) => {
+  AppleMusic.searchSong = (search, limit = 10, offset = 0) => {
     return new Promise((resolve, reject) => {
-      searchSong(search, 0, async (answer, ...rest) => {
+      searchSong(search, limit, offset, async (answer, ...rest) => {
         if (answer) {
           try {
             let cb = JSON.parse(rest)
@@ -110,9 +110,9 @@ if (Platform.OS == 'ios') {
   }
 
   const searchAlbum = AppleMusic.searchForTerm
-  AppleMusic.searchAlbum = (search) => {
+  AppleMusic.searchAlbum = (search, limit = 10, offset = 0) => {
     return new Promise((resolve, reject) => {
-      searchAlbum(search, 0, async (answer, ...rest) => {
+      searchAlbum(search, limit, offset, async (answer, ...rest) => {
         if (answer) {
           try {
             let cb = JSON.parse(rest)
@@ -130,9 +130,9 @@ if (Platform.OS == 'ios') {
   }
 
   const searchArtist = AppleMusic.searchForTerm
-  AppleMusic.searchArtist = (search) => {
+  AppleMusic.searchArtist = (search, limit = 10, offset = 0) => {
     return new Promise((resolve, reject) => {
-      searchArtist(search, 0, async (answer, ...rest) => {
+      searchArtist(search, limit, offset, async (answer, ...rest) => {
         if (answer) {
           try {
             let cb = JSON.parse(rest)
@@ -150,9 +150,9 @@ if (Platform.OS == 'ios') {
   }
 
   const searchPlaylist = AppleMusic.searchForTerm
-  AppleMusic.searchPlaylist = (search) => {
+  AppleMusic.searchPlaylist = (search, limit = 10, offset = 0) => {
     return new Promise((resolve, reject) => {
-      searchPlaylist(search, 0, async (answer, ...rest) => {
+      searchPlaylist(search, limit, offset, async (answer, ...rest) => {
         if (answer) {
           try {
             let cb = JSON.parse(rest)

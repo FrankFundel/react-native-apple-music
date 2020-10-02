@@ -32,6 +32,8 @@ class AppleMusicAPI: NSObject {
     private var controller: SKCloudServiceController = SKCloudServiceController()
     private var musicLibraryPermissionGranted: Bool?
 
+    // MediaPlayer
+    private var player = MPMusicPlayerController.applicationQueuePlayer
 
     @objc
     public func isInitialized(_ callback: @escaping RCTResponseSenderBlock) {
@@ -224,9 +226,9 @@ class AppleMusicAPI: NSObject {
     - Parameter callback: Callback for ReactNative
     */
     @objc
-    public func searchForTerm(_ searchString: String, offset: Int, callback: @escaping RCTResponseSenderBlock) {
+    public func searchForTerm(_ searchString: String, limit: Int, offset: Int, callback: @escaping RCTResponseSenderBlock) {
         if (client != nil) {
-            client!.searchJsonString(term: searchString, limit: 24, offset: offset) { results, error in
+            client!.searchJsonString(term: searchString, limit: limit, offset: offset) { results, error in
                 if (error == nil) {
                   callback([true, [results]])
                 } else {
@@ -405,14 +407,28 @@ class AppleMusicAPI: NSObject {
             }
         }
     }
-    
+
     @objc
     public func startSong(_ id: String){
       let storeIds: [String] = [ id ]
-      let player = MPMusicPlayerController.applicationQueuePlayer
       let queue  = MPMusicPlayerStoreQueueDescriptor(storeIDs: storeIds)
       player.setQueue(with: queue)
       player.play()
+    }
+
+    @objc
+    public func play(){
+      player.play()
+    }
+
+    @objc
+    public func pause(){
+      player.play()
+    }
+    
+    @objc
+    public func seek(time){
+      player.currentPlaybackTime = time
     }
 
     /**
