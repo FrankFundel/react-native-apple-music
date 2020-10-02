@@ -18,6 +18,7 @@ RCT_EXTERN_METHOD(isInitialized:(RCTResponseSenderBlock)callback)
 //Api functions
 //No login
 RCT_EXTERN_METHOD(searchForTerm:(NSString)term
+                  limit:(int)limit
                   offset:(int)offset
                   callback:(RCTResponseSenderBlock)callback)
 
@@ -51,10 +52,11 @@ RCT_EXTERN_METHOD(getRecentPlayed:(RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD(getUserRecommendations:(RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD(getAllUserPlaylists:(RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD(getUserPlaylist:(RCTResponseSenderBlock)callback)
-RCT_EXTERN_METHOD(startSong:(RCTResponseSenderBlock)callback)
-RCT_EXTERN_METHOD(play:(RCTResponseSenderBlock)callback)
-RCT_EXTERN_METHOD(pause:(RCTResponseSenderBlock)callback)
-RCT_EXTERN_METHOD(seek:(RCTResponseSenderBlock)callback)
+
+RCT_EXTERN_METHOD(getSong:(NSString)id)
+RCT_EXTERN_METHOD(play)
+RCT_EXTERN_METHOD(pause)
+RCT_EXTERN_METHOD(seek:(NSObject)time)
 
 RCT_EXTERN_METHOD(addToPlaylist:(NSString)playlistId
                         mediaId:(NSString)mediaId

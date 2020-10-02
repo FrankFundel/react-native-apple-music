@@ -427,7 +427,7 @@ class AppleMusicAPI: NSObject {
     }
     
     @objc
-    public func seek(time){
+    public func seek(_ time: Double){
       player.currentPlaybackTime = time
     }
 

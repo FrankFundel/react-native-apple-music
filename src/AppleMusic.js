@@ -254,20 +254,22 @@ if (Platform.OS == 'ios') {
 
   const startSong = AppleMusic.startSong
   AppleMusic.startSong = (id) => {
-    return new Promise((resolve, reject) => {
-      startSong(id, (answer, rest) => {
-        if (answer) {
-          try {
-            resolve(true)
-          } catch (e) {
-            reject(new Error("error trying to start song"))
-          }
+    startSong(id);
+  }
+  
+  const play = AppleMusic.play
+  AppleMusic.play = () => {
+    play();
+  }
+  
+  const pause = AppleMusic.pause
+  AppleMusic.pause = () => {
+    pause();
+  }
 
-        } else {
-          reject(new Error("error trying to start song"))
-        }
-      })
-    })
+  const seek = AppleMusic.seek
+  AppleMusic.seek = (time) => {
+    seek(time);
   }
 
   const getAlbum = AppleMusic.getAlbum
