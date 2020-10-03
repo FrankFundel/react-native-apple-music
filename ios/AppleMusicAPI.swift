@@ -416,12 +416,12 @@ class AppleMusicAPI: NSObject {
 
       applicationMusicPlayer.prepareToPlay(completionHandler:{ error in 
         if (error == nil) {
-            player.play()
-            resolve()
+            self.player.play()
+            callback(true)
         } else{
-            reject("Error fetching", "Error fetching", error)
+            callback(false)
         }
-      }
+      })
     }
 
     @objc
