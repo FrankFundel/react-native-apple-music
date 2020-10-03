@@ -52,14 +52,15 @@ RCT_EXTERN_METHOD(getRecentPlayed:(RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD(getUserRecommendations:(RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD(getAllUserPlaylists:(RCTResponseSenderBlock)callback)
 
+RCT_EXTERN_METHOD(getUserPlaylist:(NSString)id
+                  resolve:(RCTPromiseResolveBlock)resolve
+                  reject:(RCTPromiseRejectBlock)reject)
+
 RCT_EXTERN_METHOD(startSong:(NSString)id
                   callback:(RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD(play)
 RCT_EXTERN_METHOD(pause)
 RCT_EXTERN_METHOD(seek:(double)time)
-
-RCT_EXTERN_METHOD(getUserPlaylist:(NSString)id
-                  callback:(RCTResponseSenderBlock)callback)
                 
 RCT_EXTERN_METHOD(addToPlaylist:(NSString)playlistId
                         mediaId:(NSString)mediaId

@@ -190,27 +190,6 @@ if (Platform.OS == 'ios') {
     })
   }
 
-  const getUserPlaylist = AppleMusic.getUserPlaylist
-  AppleMusic.getUserPlaylist = (id) => {
-    return new Promise((resolve, reject) => {
-      getUserPlaylist(id, (answer, rest) => {
-        if (answer) {
-          try {
-            let cb = JSON.parse(rest)
-            console.log(cb)
-            const _playlist = cb.data
-            resolve(_playlist)
-          } catch (e) {
-            reject(new Error("error trying to get user playlist"))
-          }
-
-        } else {
-          reject(new Error("error trying to get user playlist"))
-        }
-      })
-    })
-  }
-
   const recentPlayed = AppleMusic.getRecentPlayed
   AppleMusic.recentPlayed = () => {
     return new Promise((resolve, reject) => {
