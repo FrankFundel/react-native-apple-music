@@ -409,7 +409,7 @@ class AppleMusicAPI: NSObject {
     }
 
     @objc
-    public func startSong(_ id: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock){
+    public func startSong(_ id: String, callback: @escaping RCTResponseSenderBlock){
       let storeIds: [String] = [ id ]
       let queue  = MPMusicPlayerStoreQueueDescriptor(storeIDs: storeIds)
       player.setQueue(with: queue)

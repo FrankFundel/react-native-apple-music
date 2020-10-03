@@ -53,8 +53,7 @@ RCT_EXTERN_METHOD(getUserRecommendations:(RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD(getAllUserPlaylists:(RCTResponseSenderBlock)callback)
 
 RCT_EXTERN_METHOD(startSong:(NSString)id
-                  resolve:(RCTPromiseResolveBlock)resolve
-                  reject:(RCTPromiseRejectBlock)reject)
+                  callback:(RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD(play)
 RCT_EXTERN_METHOD(pause)
 RCT_EXTERN_METHOD(seek:(NSDouble)time)

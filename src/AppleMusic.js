@@ -255,9 +255,9 @@ if (Platform.OS == 'ios') {
   const startSong = AppleMusic.startSong
   AppleMusic.startSong = (id) => {
     return new Promise((resolve, reject) => {
-      startSong(answer => {
+      startSong(id, (answer, rest) => {
         if (answer) {
-          resolve()
+          resolve(rest)
         } else {
           reject(new Error("error trying to start track"))
         }
