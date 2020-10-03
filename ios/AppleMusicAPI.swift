@@ -409,11 +409,19 @@ class AppleMusicAPI: NSObject {
     }
 
     @objc
-    public func startSong(_ id: String){
+    public func startSong(_ id: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock){
       let storeIds: [String] = [ id ]
       let queue  = MPMusicPlayerStoreQueueDescriptor(storeIDs: storeIds)
       player.setQueue(with: queue)
-      player.play()
+
+      applicationMusicPlayer.prepareToPlay(completionHandler:{ error in 
+        if (error == nil) {
+            player.play()
+            resolve()
+        } else{
+            reject("Error fetching", "Error fetching", error)
+        }
+      }
     }
 
     @objc
@@ -423,7 +431,7 @@ class AppleMusicAPI: NSObject {
 
     @objc
     public func pause(){
-      player.play()
+      player.pause()
     }
     
     @objc
