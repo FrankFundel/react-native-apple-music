@@ -257,7 +257,7 @@ if (Platform.OS == 'ios') {
     return new Promise((resolve, reject) => {
       startSong(id, (answer, rest) => {
         if (answer) {
-          resolve(rest)
+          resolve()
         } else {
           reject(new Error("error trying to start track"))
         }

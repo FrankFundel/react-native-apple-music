@@ -396,13 +396,13 @@ class AppleMusicAPI: NSObject {
     }
     
     @objc
-    public func getUserPlaylist(_ id: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock){
+    public func getUserPlaylist(_ id: String, callback: @escaping RCTResponseSenderBlock){
         if (client != nil) {
             client!.getUserPlaylistJsonString(id: id){ result, error in
                 if (error == nil) {
-                    resolve(result)
+                    callback([true, [result]])
                 } else{
-                    reject("Error fetching", "Error fetching", error)
+                    callback([false, error.debugDescription])
                 }
             }
         }
@@ -414,12 +414,12 @@ class AppleMusicAPI: NSObject {
       let queue  = MPMusicPlayerStoreQueueDescriptor(storeIDs: storeIds)
       player.setQueue(with: queue)
 
-      applicationMusicPlayer.prepareToPlay(completionHandler:{ error in 
+      player.prepareToPlay(completionHandler:{ error in 
         if (error == nil) {
             self.player.play()
-            callback(true)
+            callback([true])
         } else{
-            callback(false)
+            callback([false])
         }
       })
     }
