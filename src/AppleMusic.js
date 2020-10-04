@@ -9,6 +9,11 @@ if (Platform.OS == 'ios') {
   AppleMusic.initialize = (keyID, teamID, key) => {
     return initialize(keyID, teamID, key)
   }
+  
+  const initialize2 = AppleMusic.setDevAndInit
+  AppleMusic.initialize2 = (devToken) => {
+    return initialize2(devToken)
+  }
 
   const login_basic = AppleMusic.initClientWithDevToken
   AppleMusic.login_basic = () => {

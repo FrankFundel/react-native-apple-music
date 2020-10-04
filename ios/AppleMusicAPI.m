@@ -9,6 +9,7 @@ RCT_EXTERN_METHOD(setValsAndInit:(NSString)keyID
             devTeamID:(NSString)devTeamID
             privateKey:(NSString)privateKey)
 
+RCT_EXTERN_METHOD(setDevAndInit:(NSString)devToken)
 
 RCT_EXTERN_METHOD(initClientWithDevToken)
 RCT_EXTERN_METHOD(initClientWithDevTokenAndUserToken:(RCTResponseSenderBlock)callback)

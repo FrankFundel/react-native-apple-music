@@ -58,6 +58,13 @@ class AppleMusicAPI: NSObject {
 
         self.musicLibraryPermissionGranted = self.checkIfMusicLibraryPermissionGranted()
     }
+    
+    @objc
+    public func setDevAndInit(_ devToken: String) {
+        self.devToken = devToken
+
+        self.musicLibraryPermissionGranted = self.checkIfMusicLibraryPermissionGranted()
+    }
 
     //MARK: Init of cider-client
     /**
